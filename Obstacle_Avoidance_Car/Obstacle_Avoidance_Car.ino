@@ -12,7 +12,8 @@ int Trig = A5;
 #define IN2 8
 #define IN3 9
 #define IN4 11
-#define carSpeed 150
+#define carSpeed 140
+#define turnSpeed 175
 int rightDistance = 0, leftDistance = 0, middleDistance = 0;
 
 void setup() {
@@ -34,7 +35,7 @@ void loop() {
     delay(500);
     middleDistance = Distance_test();
 
-    if(middleDistance <= 20) {
+    if(middleDistance <= 23) {
       stop();
       delay(500);
       myservo.write(10);
