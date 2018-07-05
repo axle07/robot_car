@@ -12,8 +12,8 @@ int Trig = A5;
 #define IN2 8
 #define IN3 9
 #define IN4 11
-#define carSpeed 140
-#define turnSpeed 175
+#define carSpeed 255
+#define turnSpeed 255
 int rightDistance = 0, leftDistance = 0, middleDistance = 0;
 
 void setup() {
@@ -35,34 +35,26 @@ void loop() {
     delay(500);
     middleDistance = Distance_test();
 
-    if(middleDistance <= 23) {
+    if(middleDistance <= 50) {
       stop();
-      delay(500);
       myservo.write(10);
-      delay(1000);
+      delay(300);
       rightDistance = Distance_test();
-
-      delay(500);
       myservo.write(90);
-      delay(1000);
+      delay(300);
       myservo.write(180);
-      delay(1000);
+      delay(300);
       leftDistance = Distance_test();
-
-      delay(500);
       myservo.write(90);
-      delay(1000);
+      
       if(rightDistance > leftDistance) {
         right();
-        delay(360);
       }
       else if(rightDistance < leftDistance) {
         left();
-        delay(360);
       }
       else if((rightDistance <= 20) || (leftDistance <= 20)) {
         back();
-        delay(180);
       }
       else {
         forward();
